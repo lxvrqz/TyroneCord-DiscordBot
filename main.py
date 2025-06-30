@@ -3,13 +3,30 @@ from discord.ext import commands
 from dotenv import load_dotenv
 import os
 
+GUILD_ID = discord.Object(id=1386808721086218290)
+
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
-#Bot Prefix
-bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
-@bot.event()
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+@bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
+
+    for filename in os.listdir("./commands"):
+        if filename.endswith(".py") and filename != "__init__.py":
+            await bot.load_extension(f"commands.{filename[:-3]}")
+
+    try:
+        bot.tree.copy_global_to(guild=GUILD_ID)
+        synced = await bot.tree.sync(guild=GUILD_ID)
+        print(f" synced {len(synced)}.")
+    except Exception as e:
+        print(f"Error syncing commands locally: {e}")
 
 bot.run(TOKEN)
