@@ -1,6 +1,4 @@
-
-[2025-06-30 10:06:42] [INFO    ] commands.kick: lxvrqz used /kick: tyronegrond. Reason: test
-[2025-06-30 10:07:08] [INFO    ] commands.ban: lxvrqz used /ban: tyronegrond. Reason: test
-[2025-06-30 10:07:33] [INFO    ] commands.say: lxvrqz hat /say genutzt: test
-[2025-06-30 10:07:43] [INFO    ] commands.warn: lxvrqz warned tyronegrond
-[2025-06-30 10:08:12] [INFO    ] commands.warn: lxvrqz cleared warnings from tyronegrond
+[2025-06-30 22:46:06] [INFO    ] discord.client: logging in using static token
+[2025-06-30 22:46:07] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 9558c465db589be49b5c1ea15b3d32cb).
+[2025-06-30 22:50:13] [INFO    ] discord.client: logging in using static token
+[2025-06-30 22:50:15] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 01f2135fe6ee7197452773c73e5003f3).
