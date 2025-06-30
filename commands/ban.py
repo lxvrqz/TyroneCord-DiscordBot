@@ -1,6 +1,12 @@
+from logging import getLogger
+
 import discord
 from discord import app_commands
 from discord.ext import commands
+import logging
+
+log = logging.getLogger(__name__)
+
 
 class Ban(commands.Cog):
     def __init__(self, bot):
@@ -9,6 +15,7 @@ class Ban(commands.Cog):
     @app_commands.command(name="ban", description="Ban a user from the server.")
     @app_commands.describe(member="The member to be banned.", reason="The reason for the ban.")
     async def ban(self, interaction: discord.Interaction, member: discord.Member, reason: str = "No reason provided"):
+        log.info(f"{interaction.user} used /ban: {member}. Reason: {reason}")
         if not interaction.user.guild_permissions.ban_members:
             await interaction.response.send_message("You don't have permission to ban.", ephemeral=True)
             return

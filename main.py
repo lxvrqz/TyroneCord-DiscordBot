@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import logging
 
 GUILD_ID = discord.Object(id=1386808721086218290)
 
@@ -11,6 +12,17 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+
+logging.basicConfig(
+    level=logging.INFO,  # oder DEBUG für mehr Details
+    format="[{asctime}] [{levelname:<8}] {name}: {message}",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    style="{",
+    handlers=[
+        logging.FileHandler("bot.log", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 

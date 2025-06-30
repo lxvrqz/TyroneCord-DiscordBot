@@ -1,6 +1,10 @@
 import discord
 from discord import app_commands
 from discord.ext import commands
+import logging
+
+log = logging.getLogger(__name__)
+
 
 class Kick(commands.Cog):
     def __init__(self, bot):
@@ -9,6 +13,7 @@ class Kick(commands.Cog):
     @app_commands.command(name="kick", description="Kick a user from the server.")
     @app_commands.describe(member="The member to be kicked.", reason="The reason for the kick.")
     async def kick(self, interaction: discord.Interaction, member: discord.Member, reason: str = "No reason provided"):
+        log.info(f"{interaction.user} used /kick: {member}. Reason: {reason}")
         if not interaction.user.guild_permissions.kick_members:
             await interaction.response.send_message("You don't have permission to kick members.", ephemeral=True)
             return
