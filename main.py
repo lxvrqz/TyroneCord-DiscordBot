@@ -14,7 +14,7 @@ intents.message_content = True
 intents.members = True
 
 logging.basicConfig(
-    level=logging.INFO,  # oder DEBUG für mehr Details
+    level=logging.INFO,
     format="[{asctime}] [{levelname:<8}] {name}: {message}",
     datefmt="%Y-%m-%d %H:%M:%S",
     style="{",
@@ -23,6 +23,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
+
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
